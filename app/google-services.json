@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1080673155822",
+    "firebase_url": "https://mylearnfb-6cdec.firebaseio.com",
+    "project_id": "mylearnfb-6cdec",
+    "storage_bucket": "mylearnfb-6cdec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080673155822:android:9a8d0605ec4758e9e151ff",
+        "android_client_info": {
+          "package_name": "com.ex.mylearnfb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080673155822-83jb5b46489oncvgiagj7pfk5ten3b4h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ex.mylearnfb",
+            "certificate_hash": "350f3abc14e43499522b9860395decb3fe333aa0"
+          }
+        },
+        {
+          "client_id": "1080673155822-4qmag8o69qnl2dg80coc54e61kbd8lke.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4Dr16KxA3tG949c0uN-_PnVKTlpS8BJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080673155822-4qmag8o69qnl2dg80coc54e61kbd8lke.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

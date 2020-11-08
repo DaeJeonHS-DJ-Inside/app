@@ -10,6 +10,7 @@ class activityMyGroups : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private var uid:String? = null
+    val listGroups = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +18,8 @@ class activityMyGroups : AppCompatActivity() {
 
         if (intent.hasExtra("uid"))
             uid = intent.getStringExtra("uid")
-
         auth = FirebaseAuth.getInstance()
+
 
         button_enterMakeGroupActivity.setOnClickListener {
             var nextIntent = Intent(this, activityMakeGroup::class.java)
@@ -26,5 +27,10 @@ class activityMyGroups : AppCompatActivity() {
             startActivity(nextIntent)
         }
 
+        val listGroupAdaptor = GroupListAdaptor(this, listGroups)
+        listviewGroup.adapter = listGroupAdaptor
+
     }
+
+
 }

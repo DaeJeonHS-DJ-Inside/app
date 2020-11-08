@@ -3,8 +3,10 @@ package com.ex.mylearnfb
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_my_groups.*
+import kotlinx.android.synthetic.main.listview_group.*
 
 class activityMyGroups : AppCompatActivity() {
 
@@ -26,10 +28,12 @@ class activityMyGroups : AppCompatActivity() {
             nextIntent.putExtra("uid", uid)
             startActivity(nextIntent)
         }
+        Log.d("Test", listGroupName.text.toString())
 
-        val listGroupAdaptor = GroupListAdaptor(this, listGroups)
-        listviewGroup.adapter = listGroupAdaptor
+        val listGroupAdapter = GroupListAdapter(this, listGroups)
+        listviewGroup.adapter = listGroupAdapter
 
+        Log.d("Test", listGroupName.text.toString())
     }
 
 

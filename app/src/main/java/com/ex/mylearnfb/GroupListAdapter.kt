@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import kotlinx.android.synthetic.main.listview_group.view.*
 
-class GroupListAdaptor(val context: Context, val list:ArrayList<String>) : BaseAdapter(){
+class GroupListAdapter(val context: Context, val list:ArrayList<String>) : BaseAdapter(){
 
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
 
         val view: View = LayoutInflater.from(context).inflate(R.layout.listview_group, null)
 
-        view.listGroupName.setText("aaa")
+        //view.listGroupName.text = "aaa"
 
 
         return view

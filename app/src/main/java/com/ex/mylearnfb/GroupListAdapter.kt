@@ -13,7 +13,7 @@ class GroupListAdapter(val context: Context, val list:ArrayList<String>) : BaseA
 
         val view: View = LayoutInflater.from(context).inflate(R.layout.listview_group, null)
 
-        //view.listGroupName.text = "aaa"
+        view.listGroupName.text = list[p0]
 
 
         return view
@@ -28,6 +28,6 @@ class GroupListAdapter(val context: Context, val list:ArrayList<String>) : BaseA
     }
 
     override fun getCount(): Int {
-        return 3
+        return list.size
     }
 }

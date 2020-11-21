@@ -31,19 +31,22 @@ class activityMakeGroup : AppCompatActivity() {
             //val myRef = database.reference
             newdb = database.child(editTextGroupName.text.toString())
 
+            /*
+            newdb.child("GroupName").setValue(editTextGroupDescription.text.toString())
             newdb.child("GroupDescription").setValue(editTextGroupDescription.text.toString())
-            newdb.child("GroupAdmin").setValue(uid.toString())
+            newdb.child("GroupAdmin").setValue(uid.toString()) */
+            newdb.child("Posts").child("post"+1).child("PostName").setValue("Hello")
+            newdb.child("Posts").child("post"+1).child("PostDescription").setValue("Hello Group")
 
-/*            val dataInput = DataModel(
+            val dataInput = DataModel(
 
                 editTextGroupName.text.toString(),
                 editTextGroupDescription.text.toString(),
                 uid.toString()
             )
-*/
-            /*uid?.let { it1 -> myRef.child(it1).push().setValue(dataInput)
-            myRef.child("groups").push().setValue(dataInput)
-            }*/
+
+            //uid?.let { it1 -> myRef.child(it1).push().setValue(dataInput)
+            newdb.setValue(dataInput)
         }
     }
 }

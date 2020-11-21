@@ -37,6 +37,7 @@ class activityMyGroups : AppCompatActivity() {
         val listGroupAdapter = GroupListAdapter(this, listGroups)
         listviewGroup.adapter = listGroupAdapter
 
+
         database.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
@@ -48,6 +49,7 @@ class activityMyGroups : AppCompatActivity() {
                 {
                     Log.d("TEST", data.toString())
                     val modelResult = data.getValue(DataModel::class.java)
+
                     Log.d("TEST", modelResult.toString())
                     listGroups.add(modelResult?.groupName.toString())
                 }
@@ -55,6 +57,7 @@ class activityMyGroups : AppCompatActivity() {
             }
 
         })
+
 
         listviewGroup.setOnItemClickListener { adapterView, view, i, l ->
 

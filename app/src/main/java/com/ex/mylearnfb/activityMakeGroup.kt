@@ -35,8 +35,6 @@ class activityMakeGroup : AppCompatActivity() {
             newdb.child("GroupName").setValue(editTextGroupDescription.text.toString())
             newdb.child("GroupDescription").setValue(editTextGroupDescription.text.toString())
             newdb.child("GroupAdmin").setValue(uid.toString()) */
-            newdb.child("Posts").child("post"+1).child("PostName").setValue("Hello")
-            newdb.child("Posts").child("post"+1).child("PostDescription").setValue("Hello Group")
 
             val dataInput = DataModel(
 
@@ -47,6 +45,13 @@ class activityMakeGroup : AppCompatActivity() {
 
             //uid?.let { it1 -> myRef.child(it1).push().setValue(dataInput)
             newdb.setValue(dataInput)
+
+            val postdataInput = PostData(
+                "Hello",
+                "Hello Group",
+                "Administrator"
+            )
+            newdb.child("Posts").child("post"+0).setValue(postdataInput)
         }
     }
 }

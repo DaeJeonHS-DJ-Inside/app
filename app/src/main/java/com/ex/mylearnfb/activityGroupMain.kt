@@ -3,13 +3,14 @@ package com.ex.mylearnfb
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.EditText
+import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_group_main.*
 
 
@@ -20,6 +21,7 @@ class activityGroupMain : AppCompatActivity() {
     private lateinit var dbpost: DatabaseReference
     private var uid:String? = null
     private var groupName:String? = null
+    val listpost = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +36,26 @@ class activityGroupMain : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         database = FirebaseDatabase.getInstance().reference.child("groups")
+
+        /*val listPostAdapter = GroupPostAdapter(this, listpost, )
+        lvGroupPosts.adapter = listPostAdapter
+
+        database.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (data in snapshot.children)
+                {
+                    val modelResult = data.getValue(DataModel::class.java)
+                    listpost.add(modelResult?.groupName.toString())
+                }
+                listPostAdapter.notifyDataSetChanged()
+            }
+
+        })*/
+
 
         fabPosting.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

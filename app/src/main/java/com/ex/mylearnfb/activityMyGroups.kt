@@ -36,6 +36,7 @@ class activityMyGroups : AppCompatActivity() {
 
         val listGroupAdapter = GroupListAdapter(this, listGroups)
         listviewGroup.adapter = listGroupAdapter
+        listGroupAdapter.notifyDataSetChanged()
 
 
         database.addValueEventListener(object : ValueEventListener{
@@ -62,6 +63,7 @@ class activityMyGroups : AppCompatActivity() {
         listviewGroup.setOnItemClickListener { adapterView, view, i, l ->
 
             val element = listGroupAdapter.getItemId(i)
+            Log.d("ITEM", listGroupAdapter.getItemId(i).toString())
             Log.d("ITEM", element.toString())
 
             database.addListenerForSingleValueEvent(object : ValueEventListener
@@ -77,6 +79,7 @@ class activityMyGroups : AppCompatActivity() {
                             Log.d("TEST", result?.groupDescription.toString())
 
                         Log.d("TEST", result?.groupName.toString())
+
                     }
                 }
             })

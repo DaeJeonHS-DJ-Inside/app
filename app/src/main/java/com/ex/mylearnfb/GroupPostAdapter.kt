@@ -1,6 +1,7 @@
 package com.ex.mylearnfb
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,12 +25,15 @@ class GroupPostAdapter(val context: Context, private val list:ArrayList<String>,
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
-            override fun onDataChange(snapshot: PostData) {
+            override fun onDataChange(snapshot: DataSnapshot) {
                 for (ds in snapshot.children){
-                    val result = ds.getValue(DataModel::class.java)
-                    if(result?.PostName.toString() == list[p0]){
-                        view.tvListGroupDescription.text = result?.groupDescription.toString()
+                    val result = ds.getValue(PostData::class.java)
+
+                    if(result?.postName.toString() == list[p0]){
+                        view.tvPostPreview.text = result?.postContent.toString()
+                        view.tvPostWriter.text = result?.postWriter.toString()
+
+
                     }
                 }
             }

@@ -34,10 +34,14 @@ class activityMyGroups : AppCompatActivity() {
             startActivity(nextIntent)
         }
 
+        btEnterSearchingGroup.setOnClickListener {
+            var nextIntent = Intent(this, ActivitySearchingGroup::class.java)
+            nextIntent.putExtra("uid", uid)
+            startActivity(nextIntent)
+        }
+
         val listGroupAdapter = GroupListAdapter(this, listGroups)
         listviewGroup.adapter = listGroupAdapter
-        listGroupAdapter.notifyDataSetChanged()
-
 
         database.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(error: DatabaseError) {

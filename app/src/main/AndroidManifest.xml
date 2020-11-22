@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activityGroupMain"></activity>
+        <activity android:name=".ActivitySearchingGroup"></activity>
+        <activity android:name=".activityGroupMain" />
         <activity android:name=".activityMakeGroup" />
         <activity android:name=".activityUserMain" />
         <activity android:name=".Loginscreen" />

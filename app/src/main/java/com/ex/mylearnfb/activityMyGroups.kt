@@ -72,6 +72,7 @@ class activityMyGroups : AppCompatActivity() {
                     for (ds in snapshot.children) {
                         val result = ds.getValue(DataModel::class.java)
                         if(result?.groupName.toString() == listGroups[element.toInt()].toString())
+                            Log.d("TEST", result?.groupDescription.toString())
                     }
                 }
             })

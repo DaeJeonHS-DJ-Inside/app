@@ -22,11 +22,11 @@
 
     <EditText
         android:id="@+id/editTextGroupDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="206dp"
+        android:layout_height="151dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="GroupDescription"
+        android:inputType="textLongMessage|textImeMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -41,8 +41,28 @@
         android:text="MakeGroup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextGroupDescription"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintVertical_bias="0.731" />
+
+    <Button
+        android:id="@+id/btSelectGroupBanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Banner Image"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMakeGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivPreviewGroupBannerImage"
+        android:layout_width="349dp"
+        android:layout_height="111dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/btSelectGroupBanner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextGroupDescription"
+        app:layout_constraintVertical_bias="0.525"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 </androidx.constraintlayout.widget.ConstraintLayout>

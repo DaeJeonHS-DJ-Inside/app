@@ -33,6 +33,4 @@ class Register : AppCompatActivity() {
             }
         }
     }
-
-
 }

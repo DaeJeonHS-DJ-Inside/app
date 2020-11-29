@@ -49,13 +49,9 @@ class activityMyGroups : AppCompatActivity() {
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                Log.d("TEST", snapshot.children.toString())
-                for (data in snapshot.children)
-                {
-                    Log.d("TEST", data.toString())
-                    val modelResult = data.getValue(DataModel::class.java)
 
-                    Log.d("TEST", modelResult.toString())
+                for (data in snapshot.children) {
+                    val modelResult = data.getValue(DataModel::class.java)
                     listGroups.add(modelResult?.groupName.toString())
                 }
                 listGroupAdapter.notifyDataSetChanged()
@@ -63,12 +59,9 @@ class activityMyGroups : AppCompatActivity() {
 
         })
 
-
         listviewGroup.setOnItemClickListener { adapterView, view, i, l ->
 
             val element = listGroupAdapter.getItemId(i)
-            Log.d("ITEM", listGroupAdapter.getItemId(i).toString())
-            Log.d("ITEM", element.toString())
 
             database.addListenerForSingleValueEvent(object : ValueEventListener
             {
@@ -76,14 +69,9 @@ class activityMyGroups : AppCompatActivity() {
                     TODO("Not yet implemented")
                 }
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    for (ds in snapshot.children)
-                    {
+                    for (ds in snapshot.children) {
                         val result = ds.getValue(DataModel::class.java)
                         if(result?.groupName.toString() == listGroups[element.toInt()].toString())
-                            Log.d("TEST", result?.groupDescription.toString())
-
-                        Log.d("TEST", result?.groupName.toString())
-
                     }
                 }
             })

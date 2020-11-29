@@ -31,15 +31,11 @@ class ActivitySearchingGroup : AppCompatActivity() {
                 searchGroup(p0.toString())
                 return true
             }
-
             override fun onQueryTextChange(p0: String?): Boolean {
                 Log.d("SRC", "Change")
                 return true
             }
         })
-
-
-
     }
 
     fun searchGroup(keyword : String) {
@@ -64,9 +60,5 @@ class ActivitySearchingGroup : AppCompatActivity() {
         val listGroupAdapter = GroupListAdapter(this, searched)
         lvSearchedGroups.adapter = listGroupAdapter
         listGroupAdapter.notifyDataSetChanged()
-
-
     }
-
-
 }

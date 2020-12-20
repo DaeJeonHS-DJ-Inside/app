@@ -1,15 +1,16 @@
 package com.ex.mylearnfb
 
 import android.content.Context
+import android.graphics.BitmapFactory
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import com.bumptech.glide.Glide
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
@@ -44,10 +45,13 @@ class activityGroupMain : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().reference.child("groups").child(groupName.toString()).child("Posts")
         storage = Firebase.storage
 
-        val storageRef = storage.reference.child(groupName.toString()+".")
+        val storageRef = storage.reference.child(groupName.toString())
+        Log.d("IMAGE", groupName.toString())
+        Log.d("IMAGE", storageRef.toString())
 
-        ivGroupBanner.setImageURI()
-
+        val imageView = findViewById<ImageView>(R.id.ivGroupBanner)
+        Glide.with(this).load(storageRef).into(imageView)
+        
         tvInGroupTitle.text = groupName.toString()
 
         val listPostAdapter = GroupPostAdapter(this, listpost, groupName.toString())

@@ -52,7 +52,7 @@ class activityMakeGroup : AppCompatActivity() {
 
                 val storageRef = storage.reference
                 val groupImageRef = storageRef.child(editTextGroupName.text.toString())
-                storageRef.child("images/" + editTextGroupName.text.toString())
+ //               storageRef.child("images/" + editTextGroupName.text.toString())
 
 
 

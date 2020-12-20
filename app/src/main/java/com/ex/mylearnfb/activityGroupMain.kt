@@ -12,6 +12,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_group_main.*
 import kotlinx.android.synthetic.main.listview_post.view.*
 
@@ -21,6 +24,8 @@ class activityGroupMain : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var dbpost: DatabaseReference
+    private lateinit var storage: FirebaseStorage
+
     private var uid:String? = null
     private var groupName:String? = null
     val listpost = ArrayList<String>()
@@ -36,8 +41,12 @@ class activityGroupMain : AppCompatActivity() {
             groupName = intent.getStringExtra("groupName")
 
         auth = FirebaseAuth.getInstance()
-
         database = FirebaseDatabase.getInstance().reference.child("groups").child(groupName.toString()).child("Posts")
+        storage = Firebase.storage
+
+        val storageRef = storage.reference.child(groupName.toString()+".")
+
+        ivGroupBanner.setImageURI()
 
         tvInGroupTitle.text = groupName.toString()
 
@@ -50,6 +59,7 @@ class activityGroupMain : AppCompatActivity() {
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
+                listpost.clear()
                 for (data in snapshot.children)
                 {
                     val modelResult = data.getValue(PostData::class.java)

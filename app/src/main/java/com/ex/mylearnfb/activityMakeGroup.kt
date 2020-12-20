@@ -1,7 +1,9 @@
 package com.ex.mylearnfb
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,8 +13,14 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
+import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_make_group.*
 import kotlinx.android.synthetic.main.activity_my_groups.*
+import java.io.ByteArrayOutputStream
+import java.io.File
 import java.lang.Exception
 import java.net.URL
 
@@ -21,9 +29,12 @@ class activityMakeGroup : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var newdb: DatabaseReference
+    private lateinit var storage: FirebaseStorage
 
     private var uid:String? = null
     private val OPENGALLERY = 1
+
+    private lateinit var bannerImageUri: Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +44,21 @@ class activityMakeGroup : AppCompatActivity() {
             uid = intent.getStringExtra("uid")
 
         database = FirebaseDatabase.getInstance().reference.child("groups")
+        storage = Firebase.storage
 
         buttonMakeGroup.setOnClickListener {
-            if (!TextUtils.isEmpty(editTextGroupName.text) && !TextUtils.isEmpty(editTextGroupDescription.text)) {
+            if (!TextUtils.isEmpty(editTextGroupName.text) && !TextUtils.isEmpty(editTextGroupDescription.text)) { // TODO: 2020-12-19 check preview image is null
                 newdb = database.child(editTextGroupName.text.toString())
+
+                val storageRef = storage.reference
+                val groupImageRef = storageRef.child(editTextGroupName.text.toString())
+                storageRef.child("images/" + editTextGroupName.text.toString())
+
+
+
+                var uploadTask: UploadTask = groupImageRef.putFile(bannerImageUri)
+
+                Log.d("IMAGE", uploadTask.toString())
 
                 val dataInput = DataModel(
 
@@ -58,6 +80,13 @@ class activityMakeGroup : AppCompatActivity() {
         btSelectGroupBanner.setOnClickListener{
             selectGroupImage()
         }
+    }
+
+    private fun getImageUriFromBitmap(context: Context, bitmap: Bitmap): Uri{
+        val bytes = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path = MediaStore.Images.Media.insertImage(context.contentResolver, bitmap, "Title", null)
+        return Uri.parse(path.toString())
     }
 
     private fun selectGroupImage(){
@@ -83,6 +112,9 @@ class activityMakeGroup : AppCompatActivity() {
                     ivPreviewGroupBannerImage.setImageBitmap(bitmap)
 
                     Log.d("BANNER", "reached3")
+
+                    bannerImageUri = getImageUriFromBitmap(this, bitmap)
+
                 }catch (e:Exception){
 
                     Log.d("BANNER", "reached4")
@@ -90,6 +122,11 @@ class activityMakeGroup : AppCompatActivity() {
                 }
             }
         }
+
+
+
     }
+
+
 
 }

@@ -35,8 +35,8 @@
 
     <Button
         android:id="@+id/button_enterMakeGroupActivity"
-        android:layout_width="119dp"
-        android:layout_height="36dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
         android:text="MakeGroup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,8 +58,8 @@
 
     <Button
         android:id="@+id/btEnterSearchingGroup"
-        android:layout_width="119dp"
-        android:layout_height="36dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
         android:layout_marginTop="1dp"
         android:text="FINDGROUP"
         app:layout_constraintEnd_toEndOf="parent"

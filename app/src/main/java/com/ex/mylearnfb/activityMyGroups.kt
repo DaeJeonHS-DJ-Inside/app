@@ -49,7 +49,7 @@ class activityMyGroups : AppCompatActivity() {
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
-
+                listGroups.clear()
                 for (data in snapshot.children) {
                     val modelResult = data.getValue(DataModel::class.java)
                     listGroups.add(modelResult?.groupName.toString())

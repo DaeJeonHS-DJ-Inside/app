@@ -8,9 +8,11 @@
 
     <ImageView
         android:id="@+id/ivGroupBanner"
-        android:layout_width="412dp"
-        android:layout_height="246dp"
+        android:layout_width="wrap_content"
+        android:layout_height="176dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -45,8 +47,10 @@
         android:layout_height="446dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvInGroupTitle">
+        app:layout_constraintTop_toBottomOf="@+id/tvInGroupTitle"
+        app:layout_constraintVertical_bias="0.0">
 
     </ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>

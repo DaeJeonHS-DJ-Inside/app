@@ -49,9 +49,11 @@ class activityGroupMain : AppCompatActivity() {
         Log.d("IMAGE", groupName.toString())
         Log.d("IMAGE", storageRef.toString())
 
-        val imageView = findViewById<ImageView>(R.id.ivGroupBanner)
-        Glide.with(this).load(storageRef).into(imageView)
-        
+        storageRef.downloadUrl.addOnSuccessListener { Uri ->
+            val imageURL = Uri.toString()
+            val imageView = findViewById<ImageView>(R.id.ivGroupBanner)
+            Glide.with(this).load(imageURL).into(imageView)
+        }
         tvInGroupTitle.text = groupName.toString()
 
         val listPostAdapter = GroupPostAdapter(this, listpost, groupName.toString())

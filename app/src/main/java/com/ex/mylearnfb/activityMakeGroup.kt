@@ -76,6 +76,10 @@ class activityMakeGroup : AppCompatActivity() {
                 )
                 newdb.child("Posts").child("post" + 0).setValue(postdataInput)
             }
+
+            var nextIntent = Intent(this, activityMyGroups::class.java)
+            nextIntent.putExtra("uid", uid)
+            startActivity(nextIntent)
         }
         btSelectGroupBanner.setOnClickListener{
             selectGroupImage()
